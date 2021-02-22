@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+
+  <link rel="stylesheet" href="./style.css" >
+</head>
+<body>
+  <main>
+    <table>
+      <tr>
+        <td colspan="4"><input type="text" id="screen" readonly ></td>
+      </tr>
+      <tr>
+        <td colspan="2"><button onclick="clearScreen()">C</button></td>
+        <td><button class="erase-btn" onclick="eraseLastSymbol()">&#10145;</button></td>
+        <td><button onclick="concatWithInput(this)">/</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="concatWithInput(this)">7</button></td>
+        <td><button onclick="concatWithInput(this)">8</button></td>
+        <td><button onclick="concatWithInput(this)">9</button></td>
+        <td><button onclick="concatWithInput(this)">*</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="concatWithInput(this)">4</button></td>
+        <td><button onclick="concatWithInput(this)">5</button></td>
+        <td><button onclick="concatWithInput(this)">6</button></td>
+        <td><button onclick="concatWithInput(this)">-</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="concatWithInput(this)">1</button></td>
+        <td><button onclick="concatWithInput(this)">2</button></td>
+        <td><button onclick="concatWithInput(this)">3</button></td>
+        <td><button onclick="concatWithInput(this)">+</button></td>
+      </tr>
+      <tr>
+        <td colspan="2"><button onclick="concatWithInput(this)">0</button></td>
+        <td><button onclick="concatWithInput(this)">.</button></td>
+        <td><button onclick="calculate()">=</button></td>
+      </tr>
+    </table>
+  </main>
+  <script src="./index.js"></script>
+</body>
+</html>
