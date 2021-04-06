@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calender</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./index.js"></script>
+  </head>
+  <body>
+    <div class="calender">
+      <header>
+        <button onclick="changeMonthBy(-1)">&lt;</button>
+        <span id="title">2020-3</span>
+        <button onclick="changeMonthBy(1)">&gt;</button>
+      </header>
+      <table>
+        <tr>
+          <th>Sun</th>
+          <th>Mon</th>
+          <th>Tus</th>
+          <th>Wen</th>
+          <th>Ths</th>
+          <th>Fri</th>
+          <th>Sat</th>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      //creating the current date
+      let curDate = new Date();
+      //generating the month base on current date
+      let generatedMonth = genMonthCalender(
+        curDate.getFullYear(),
+        curDate.getMonth()
+      );
+      //updating the current date into the table
+      updateTable();
+
+      //changing the month by value
+      function changeMonthBy(value) {
+        curDate = new Date(curDate.getFullYear(), curDate.getMonth() + value);
+        generatedMonth = genMonthCalender(
+          curDate.getFullYear(),
+          curDate.getMonth()
+        );
+        updateTable();
+      }
+
+      //updating the calender based on the generated monthly calender
+      function updateTable() {
+        document.getElementById("title").innerHTML =
+          curDate.getFullYear() + "-" + (curDate.getMonth() + 1);
+
+        let rows = document.getElementsByTagName("tr");
+        for (let i = 1; i < rows.length; i++) {
+          let tds = rows[i].getElementsByTagName("td");
+          for (let j = 0; j < 7; j++) {
+            tds[j].innerHTML =
+              generatedMonth[i - 1][j] === 0 ? " " : generatedMonth[i - 1][j];
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
