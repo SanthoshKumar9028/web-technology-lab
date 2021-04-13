@@ -41,4 +41,13 @@ table {
 table td {
   text-align: center;
   padding: 10px;
+  cursor: pointer;
+}
+
+table td:not(.cur-date):hover {
+  background-color: lightcoral;
+}
+.cur-date {
+  background-color: crimson;
+  color: white;
 }

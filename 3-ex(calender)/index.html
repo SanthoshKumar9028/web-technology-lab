@@ -74,21 +74,26 @@
     </div>
     <script>
       //creating the current date
+      let calenderDate = new Date();
       let curDate = new Date();
+
       //generating the month base on current date
       let generatedMonth = genMonthCalender(
-        curDate.getFullYear(),
-        curDate.getMonth()
+        calenderDate.getFullYear(),
+        calenderDate.getMonth()
       );
       //updating the current date into the table
       updateTable();
 
       //changing the month by value
       function changeMonthBy(value) {
-        curDate = new Date(curDate.getFullYear(), curDate.getMonth() + value);
+        calenderDate = new Date(
+          calenderDate.getFullYear(),
+          calenderDate.getMonth() + value
+        );
         generatedMonth = genMonthCalender(
-          curDate.getFullYear(),
-          curDate.getMonth()
+          calenderDate.getFullYear(),
+          calenderDate.getMonth()
         );
         updateTable();
       }
@@ -96,7 +101,13 @@
       //updating the calender based on the generated monthly calender
       function updateTable() {
         document.getElementById("title").innerHTML =
-          curDate.getFullYear() + "-" + (curDate.getMonth() + 1);
+          calenderDate.getFullYear() + "-" + (calenderDate.getMonth() + 1);
+
+        document.querySelector(".cur-date")?.classList.remove("cur-date");
+
+        let isCurrentMonth =
+          calenderDate.getFullYear() === curDate.getFullYear() &&
+          calenderDate.getMonth() === curDate.getMonth();
 
         let rows = document.getElementsByTagName("tr");
         for (let i = 1; i < rows.length; i++) {
@@ -104,6 +115,13 @@
           for (let j = 0; j < 7; j++) {
             tds[j].innerHTML =
               generatedMonth[i - 1][j] === 0 ? " " : generatedMonth[i - 1][j];
+
+            if (
+              isCurrentMonth &&
+              curDate.getDate() === generatedMonth[i - 1][j]
+            ) {
+              tds[j].classList.add("cur-date");
+            }
           }
         }
       }
