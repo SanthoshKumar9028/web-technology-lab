@@ -107,7 +107,7 @@ span.progress {
   position: relative;
 }
 span.progress--languages::after {
-  background-color: crimson;
+  background-color: red;
 }
 span.progress--skills::after {
   background-color: rgb(207, 83, 124);
