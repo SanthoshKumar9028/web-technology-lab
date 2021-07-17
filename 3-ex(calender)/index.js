@@ -25,21 +25,25 @@ function genMonthCalender(year, month) {
   let weekDay = dateObj.getDay();
   let totalDays = getTotalDays(year, month);
   let curDate = 1;
+
   //filling the first row
   while (weekDay < 7) {
     cal[0][weekDay++] = curDate++;
   }
+
   //filling row from second and fourth
   for (let i = 1; i < 4; i++) {
     for (let j = 0; j < 7; j++) {
       cal[i][j] = curDate++;
     }
   }
+
   //filling the last row
   for (let i = 0; i < 7; i++) {
     if (curDate > totalDays) break;
     cal[4][i] = curDate++;
   }
+
   //filling the remaing dates in first row
   let i = 0;
   while (curDate <= totalDays) {
